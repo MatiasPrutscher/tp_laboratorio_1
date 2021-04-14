@@ -1,8 +1,10 @@
 /*
  * Funciones.c
  *
- *  Created on: 12 abr. 2021
- *      Author: Maty
+ * Prutscher Matias Nicolas
+ *
+ * 1°A
+ *
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -13,7 +15,15 @@ int menu()
 {
 	setbuf(stdout, NULL);
 	int opcion;
-
+	printf("Alumno: Prutscher Matias \tcurso: 1ro A\n");
+	printf("------------------------------------------------------------------------------\n");
+	printf(" ####    ##   #       ####  #    # #        ##   #####   ####  #####    ##   \n");
+	printf("#    #  #  #  #      #    # #    # #       #  #  #    # #    # #    #  #  #  \n");
+	printf("#      #    # #      #      #    # #      #    # #    # #    # #    # #    # \n");
+	printf("#      ###### #      #      #    # #      ###### #    # #    # #####  ###### \n");
+	printf("#    # #    # #      #    # #    # #      #    # #    # #    # #   #  #    # \n");
+	printf(" ####  #    # ######  ####   ####  ###### #    # #####   ####  #    # #    # \n");
+	printf("------------------------------------------------------------------------------\n\n");
 	printf("1. Ingresar 1er operando (A=x)\n");
 	printf("2. Ingresar 2do operando (B=y)\n");;
 	printf("3. Calcular todas las operaciones\n");
@@ -40,10 +50,17 @@ int menu()
 float tomaDeDatos(void)
 {
 	float numero;
+	setbuf(stdout, NULL);
 
 	printf("Ingrese el numero a operar: ");
-	scanf("%f", &numero);
+	while(!scanf("%f", &numero))
+	{
+		system("color 40");//Al haber un error cambia el color de la consola a rojo
+		printf("\n\aError, ingrese el numero a operar: ");
+		fflush(stdin);
 
+	}
+	system("color 0F");//retorna la consola a negro
 	return numero;
 }
 

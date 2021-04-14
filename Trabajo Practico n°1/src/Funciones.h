@@ -1,8 +1,10 @@
 /*
  * Funciones.h
  *
- *  Created on: 12 abr. 2021
- *      Author: Maty
+ * Prutscher Matias Nicolas
+ *
+ * 1°A
+ *
  */
 
 #ifndef FUNCIONES_H_
@@ -21,6 +23,7 @@ int menu(void);
  *
  */
 float tomaDeDatos(void);
+
 
 /** \brief valida la opcion de salida del programa
  *
