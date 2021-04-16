@@ -113,16 +113,7 @@ int main(void) {
 					}//Fin if(banderaSegundoOperando == 0)
 					else
 					{
-						resultadoSuma = suma(primerOperando, segundoOperando);
-						resultadoResta = resta(primerOperando, segundoOperando);
-						if(segundoOperando != 0)
-						{
-							resultadoDivision = division(primerOperando, segundoOperando);
-							banderaDivisionPorCero = 1;
-						}
-						resultadoMultiplicacion = multiplicacion(primerOperando, segundoOperando);
-						resultadoFactorialA = factorial((int)primerOperando);
-						resultadoFactorialB = factorial((int)segundoOperando);
+						banderaDivisionPorCero = realizacionDeOperaciones(primerOperando, segundoOperando, &resultadoSuma, &resultadoResta, &resultadoDivision, &resultadoMultiplicacion, &resultadoFactorialA, &resultadoFactorialB);
 
 						printf("\nSe realizaron todas las operaciones\n\n");
 						banderaCalcularOperaciones = 1;//Se realizan los calculos y cambia el estado de la bandera

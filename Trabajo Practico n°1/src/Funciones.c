@@ -47,6 +47,7 @@ int menu()
 
 }
 
+
 float tomaDeDatos(void)
 {
 	float numero;
@@ -63,6 +64,7 @@ float tomaDeDatos(void)
 	system("color 0F");//retorna la consola a negro
 	return numero;
 }
+
 
 char pedidoDeSalida(void)
 {
@@ -85,25 +87,49 @@ char pedidoDeSalida(void)
 	return respuesta;
 }
 
+
+int realizacionDeOperaciones(float x, float y, float* resultadoSuma, float* resultadoResta, float* resultadoDivision, float* resultadoMultiplicacion, unsigned long long int* resultadoFactorialX, unsigned long long int* resultadoFactorialY)
+{
+	int todoOk = 0;
+
+	*resultadoSuma = suma(x, y);
+	*resultadoResta = resta(x, y);
+	*resultadoMultiplicacion = multiplicacion(x,y);
+	*resultadoFactorialX = factorial(x);
+	*resultadoFactorialY = factorial(y);
+	if(y!=0)
+	{
+		*resultadoDivision = division(x,y);
+		todoOk=1;
+	}
+
+	return todoOk;
+}
+
+
 float suma(float x, float y)
 {
 	return x + y;
 }
+
 
 float resta(float x, float y)
 {
 	return x - y;
 }
 
+
 float division(float x, float y)
 {
 	return x / y;
 }
 
+
 float multiplicacion(float x, float y)
 {
 	return x * y;
 }
+
 
 unsigned long long int factorial (int x)
 {
