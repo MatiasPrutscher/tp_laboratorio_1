@@ -33,6 +33,7 @@ que contenga las funciones para realizar las cinco operaciones.
 #include <stdio.h>
 #include <stdlib.h>
 #include "Funciones.h"
+#include "Menu.h"
 
 int main(void) {
 
@@ -55,6 +56,8 @@ int main(void) {
 	int banderaCalcularOperaciones;
 	int banderaDivisionPorCero;
 	int banderaError;
+	int banderaDecimalA;
+	int banderaDecimalB;
 
 	//inicializacion de variables
 	banderaPrimerOperando = 0;
@@ -62,6 +65,8 @@ int main(void) {
 	banderaCalcularOperaciones = 0;
 	banderaDivisionPorCero = 0;
 	banderaError = 0;
+	banderaDecimalA = 0;
+	banderaDecimalB = 0;
 	confirmacionDeSalida = 'N';
 
 	while(confirmacionDeSalida != 'S')
@@ -110,7 +115,7 @@ int main(void) {
 					}//Fin if(banderaSegundoOperando == 0)
 					else
 					{
-						banderaDivisionPorCero = realizacionDeOperaciones(primerOperando, segundoOperando, &resultadoSuma, &resultadoResta, &resultadoDivision, &resultadoMultiplicacion, &resultadoFactorialA, &resultadoFactorialB);
+						banderaDivisionPorCero = realizacionDeOperaciones(primerOperando, segundoOperando, &resultadoSuma, &resultadoResta, &resultadoDivision, &resultadoMultiplicacion, &banderaDecimalA, &banderaDecimalB, &resultadoFactorialA, &resultadoFactorialB);
 						printf("\nSe realizaron todas las operaciones\n\n");
 						banderaCalcularOperaciones = 1;//Se realizan los calculos y cambia el estado de la bandera
 
@@ -146,7 +151,7 @@ int main(void) {
 						}//Fin if(banderaCalcularOperaciones == 0)
 						else
 						{
-							muestraDeResultados(primerOperando, segundoOperando, resultadoSuma, resultadoResta, resultadoDivision, resultadoMultiplicacion, resultadoFactorialA, resultadoFactorialB, banderaDivisionPorCero);
+							muestraDeResultados(primerOperando, segundoOperando, resultadoSuma, resultadoResta, resultadoDivision, resultadoMultiplicacion, banderaDecimalA, banderaDecimalB, resultadoFactorialA, resultadoFactorialB, banderaDivisionPorCero);
 							banderaPrimerOperando = 0; 		// vuelta a 0 de las banderas iniciales
 							banderaSegundoOperando = 0;	 	// vuelta a 0 de las banderas iniciales
 							banderaCalcularOperaciones = 0; // vuelta a 0 de las banderas iniciales
