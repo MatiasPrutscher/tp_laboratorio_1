@@ -107,6 +107,28 @@ int realizacionDeOperaciones(float x, float y, float* resultadoSuma, float* resu
 }
 
 
+void muestraDeResultados(float x, float y, float resultadoSuma, float resultadoResta, float resultadoDivision, float resultadoMultiplicacion, unsigned long long int resultadoFactorialX, unsigned long long int resultadoFactorialY, int banderaDivision)
+{
+
+	printf("\ta) El resultado de %.2f+%.2f es: %.2f\n", x, y, resultadoSuma);
+	printf("\tb) El resultado de %.2f-%.2f es: %.2f\n", x, y, resultadoResta);
+	if(banderaDivision == 0)//Si la bandera es 0 no se realizo la cuenta ya que el segundo termino es 0
+	{
+		printf("\tc) No es posible dividir por cero\n");
+
+	}//Fin if(banderaDivisionPorCero == 0)
+	else
+	{
+		printf("\tc) El resultado de %.2f/%.2f es: %.2f\n",x, y, resultadoDivision);
+
+	}//Fin else if(banderaDivisionPorCero == 0)
+	printf("\td) El resultado de %.2f*%.2f es: %.2f\n", x, y, resultadoMultiplicacion);
+	printf("\te) El factorial de %d es: %I64u y El factorial de %d es: %I64u\n\n", (int)x, resultadoFactorialX, (int)y, resultadoFactorialY);
+
+
+}
+
+
 float suma(float x, float y)
 {
 	return x + y;

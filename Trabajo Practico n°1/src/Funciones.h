@@ -49,6 +49,23 @@ char pedidoDeSalida(void);
  */
 int realizacionDeOperaciones(float x, float y, float* resultadoSuma, float* resultadoResta, float* resultadoDivision, float* resultadoMultiplicacion, unsigned long long int* resultadoFactorialX, unsigned long long int* resultadoFactorialY);
 
+/** \brief Pide los datos para mostrarlos a traves de printf
+ *
+ * \param x primer numero a operar
+ * \param y segundo numero a operar
+ * \param resultadoSuma float* recibe el resultado de la suma para mostrarlo
+ * \param resultadoSuma float* recibe el resultado de la resta para mostrarlo
+ * \param resultadoSuma float* recibe el resultado de la division para mostrarlo
+ * \param resultadoSuma float* recibe el resultado de la multiplicacion para mostrarlo
+ * \param resultadoFactorialX unsigned long long int* recibe el resultado del factorial para mostrarlo
+ * \param banderaDivision int muestra si se pudo realizar la division o no
+ * \param resultadoFactorialY unsigned long long int* recibe el resultado del factorial para mostrarlo
+ * \return void
+ *
+ */
+void muestraDeResultados(float x, float y, float resultadoSuma, float resultadoResta, float resultadoDivision, float resultadoMultiplicacion, unsigned long long int resultadoFactorialX, unsigned long long int resultadoFactorialY, int banderaDivision);
+
+
 
 /** \brief recibe dos numeros, los suma y devuelve la suma de los mismos
  *

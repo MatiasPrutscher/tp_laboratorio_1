@@ -1,7 +1,6 @@
 /*
  ============================================================================
 Prutscher Matias Nicolas
-
 1°A
 
 1 Enunciado
@@ -82,10 +81,10 @@ int main(void) {
 					system("color 40");//Al haber un error cambia el color de la consola a rojo
 					printf("\n\aError, no se puede ingresar el segundo numero sin haber ingresado el primero\n\n");//\a emite una señal sonora avisando al usuario que ocurrio un error
 					banderaError = 1;
+
 				}//Fin if(banderaPrimerOperando == 0)
 				else
 				{
-
 					segundoOperando = tomaDeDatos();
 					banderaSegundoOperando = 1;//Se ingreso el dato y cambia el estado de la bandera
 
@@ -95,7 +94,6 @@ int main(void) {
 			case 3:
 				if(banderaPrimerOperando == 0)//no permite realizar las operaciones sin antes haber ingresado el primer numero e informa de dicho problema
 				{
-
 					system("color 40");//Al haber un error cambia el color de la consola a rojo
 					printf("\n\aError, no se puede realizar las operaciones sin haber ingresado el primer numero a operar\n\n");//\a emite una señal sonora avisando al usuario que ocurrio un error
 					banderaError = 1;
@@ -105,7 +103,6 @@ int main(void) {
 				{
 					if(banderaSegundoOperando == 0)//no permite realizar las operaciones sin antes haber ingresado el segundo numero e informa de dicho problema
 					{
-
 						system("color 40");//Al haber un error cambia el color de la consola a rojo
 						printf("\n\aError, no se puede realizar las operaciones sin haber ingresado el segundo numero a operar\n\n");//\a emite una señal sonora avisando al usuario que ocurrio un error
 						banderaError = 1;
@@ -114,7 +111,6 @@ int main(void) {
 					else
 					{
 						banderaDivisionPorCero = realizacionDeOperaciones(primerOperando, segundoOperando, &resultadoSuma, &resultadoResta, &resultadoDivision, &resultadoMultiplicacion, &resultadoFactorialA, &resultadoFactorialB);
-
 						printf("\nSe realizaron todas las operaciones\n\n");
 						banderaCalcularOperaciones = 1;//Se realizan los calculos y cambia el estado de la bandera
 
@@ -125,7 +121,6 @@ int main(void) {
 			case 4:
 				if(banderaPrimerOperando == 0)//No permite la muestra de datos sin antes haber ingresado el primer numero e informa dicho problema
 				{
-
 					system("color 40");//Al haber un error cambia el color de la consola a rojo
 					printf("\n\aError, no se puede mostrar los resultados sin haber ingresado el primer numero a operar\n\n");//\a emite una señal sonora avisando al usuario que ocurrio un error
 					banderaError = 1;
@@ -135,7 +130,6 @@ int main(void) {
 				{
 					if(banderaSegundoOperando == 0)//No permite la muestra de datos sin antes haber ingresado el segundo numero e informa dicho problema
 					{
-
 						system("color 40");//Al haber un error cambia el color de la consola a rojo
 						printf("\n\aError, no se puede mostrar los resultados sin haber ingresado el segundo numero a operar\n\n");//\a emite una señal sonora avisando al usuario que ocurrio un error
 						banderaError = 1;
@@ -145,7 +139,6 @@ int main(void) {
 					{
 						if(banderaCalcularOperaciones == 0)//No permite la muestra de datos sin haber realizado las operaciones e informa dicho problema
 						{
-
 							system("color 40");//Al haber un error cambia el color de la consola a rojo
 							printf("\n\aError, no se puede mostrar los resultados sin haber realizado las operaciones previamente\n\n");//\a emite una señal sonora avisando al usuario que ocurrio un error
 							banderaError = 1;
@@ -153,23 +146,7 @@ int main(void) {
 						}//Fin if(banderaCalcularOperaciones == 0)
 						else
 						{
-
-							printf("\ta) El resultado de %.2f+%.2f es: %.2f\n", primerOperando, segundoOperando, resultadoSuma);
-							printf("\tb) El resultado de %.2f-%.2f es: %.2f\n", primerOperando, segundoOperando, resultadoResta);
-							if(banderaDivisionPorCero == 0)//Si la bandera es 0 no se realizo la cuenta ya que el segundo termino es 0
-							{
-
-								printf("\tc) No es posible dividir por cero\n");
-
-							}//Fin if(banderaDivisionPorCero == 0)
-							else
-							{
-
-								printf("\tc) El resultado de %.2f/%.2f es: %.2f\n",primerOperando, segundoOperando, resultadoDivision);
-
-							}//Fin else if(banderaDivisionPorCero == 0)
-							printf("\td) El resultado de %.2f*%.2f es: %.2f\n", primerOperando, segundoOperando, resultadoMultiplicacion);
-							printf("\te) El factorial de %d es: %I64u y El factorial de %d es: %I64u\n\n", (int)primerOperando, resultadoFactorialA, (int)segundoOperando, resultadoFactorialB);
+							muestraDeResultados(primerOperando, segundoOperando, resultadoSuma, resultadoResta, resultadoDivision, resultadoMultiplicacion, resultadoFactorialA, resultadoFactorialB, banderaDivisionPorCero);
 							banderaPrimerOperando = 0; 		// vuelta a 0 de las banderas iniciales
 							banderaSegundoOperando = 0;	 	// vuelta a 0 de las banderas iniciales
 							banderaCalcularOperaciones = 0; // vuelta a 0 de las banderas iniciales
@@ -195,12 +172,10 @@ int main(void) {
 
 		if(banderaError == 1)//retorna la consola a negro en el caso de que hay habido un error
 		{
-
 			system("color 0F");
 
 		}//Fin if(banderaError == 1)
 	}//Fin while(confirmacionDeSalida != 'S')
 
 	return EXIT_SUCCESS;
-
 }//Fin int main(void)
