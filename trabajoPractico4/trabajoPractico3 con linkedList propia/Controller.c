@@ -30,6 +30,7 @@ int controller_loadFromText(char* path, LinkedList* pArrayListEmployee)
 			if(parser_EmployeeFromText(f, pArrayListEmployee))
 			{
 				printf("Se realizo la carga del archivo\n");
+				todoOk = 1;
 			}
 			else
 			{
@@ -51,9 +52,10 @@ int controller_loadFromText(char* path, LinkedList* pArrayListEmployee)
 int controller_loadFromBinary(char* path , LinkedList* pArrayListEmployee)
 {
 	int todoOk = 0;
+	FILE* f;
 		if(path != NULL && pArrayListEmployee != NULL)
 		{
-			FILE* f = fopen(path, "rb");
+			f = fopen(path, "rb");
 			if(f == NULL)
 			{
 				printf("No se pudo abrir el archivo\n");
@@ -63,6 +65,7 @@ int controller_loadFromBinary(char* path , LinkedList* pArrayListEmployee)
 				if(parser_EmployeeFromBinary(f, pArrayListEmployee))
 				{
 					printf("Se realizo la carga del archivo\n");
+					todoOk = 1;
 				}
 				else
 				{
@@ -84,7 +87,7 @@ int controller_loadFromBinary(char* path , LinkedList* pArrayListEmployee)
 int controller_addEmployee(LinkedList* pArrayListEmployee, int* id, char* path)
 {
 	int todoOk = 0;
-	Employee* aux = employee_new();
+	Employee* aux = NULL;
 
 	if(pArrayListEmployee != NULL)
 	{
