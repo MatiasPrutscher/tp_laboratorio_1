@@ -25,7 +25,7 @@ int main()
     int option = 0;
     int nextId = 1001;
     int auxId = 1000;
-    int flagCarga = 0;
+    int flagArchivo = 0;
 
     LinkedList* listaEmpleados = ll_newLinkedList();
     setbuf(stdout, NULL);
@@ -39,42 +39,108 @@ int main()
 			case 1:
 				if(auxId == 1000)
 				{
-					controller_loadFromText("data.csv",listaEmpleados);
+					if(!flagArchivo)
+					{
+						if(controller_loadFromText("data.csv",listaEmpleados))
+						{
+							flagArchivo = 1;
+						}
+					}
+					else
+					{
+						printf("Ya se realizo la carga del archivo anteriormente");
+					}
 				}
 				else
 				{
-					controller_loadFromText("data2.csv",listaEmpleados);
+					if(!flagArchivo)
+					{
+						if(controller_loadFromText("data2.csv",listaEmpleados))
+						{
+							flagArchivo = 1;
+						}
+					}
+					else
+					{
+						printf("Ya se realizo la carga del archivo anteriormente");
+					}
 				}
-				flagCarga = 1;
 				break;
 			case 2:
 				if(auxId == 1000)
 				{
-					controller_loadFromBinary("data.bin",listaEmpleados);
+					if(!flagArchivo)
+					{
+						if(controller_loadFromBinary("data.bin",listaEmpleados))
+						{
+							flagArchivo = 1;
+						}
+					}
+					else
+					{
+						printf("Ya se realizo la carga del archivo anteriormente");
+					}
 				}
 				else
 				{
-					controller_loadFromBinary("data2.bin",listaEmpleados);
+					if(!flagArchivo)
+					{
+						if(controller_loadFromBinary("data2.bin",listaEmpleados))
+						{
+							flagArchivo = 1;
+						}
+					}
+					else
+					{
+						printf("Ya se realizo la carga del archivo anteriormente");
+					}
 				}
-				flagCarga = 1;
 				break;
 			case 3:
 				controller_addEmployee(listaEmpleados, &nextId, "id.csv");
 				break;
 			case 4:
-				controller_editEmployee(listaEmpleados);
+				if(ll_isEmpty(listaEmpleados))
+				{
+					printf("No se puede editar sin cargar los empleados anteriormente");
+				}
+				else
+				{
+					controller_editEmployee(listaEmpleados);
+				}
 				break;
 			case 5:
-				controller_removeEmployee(listaEmpleados, nextId);
+				if(ll_isEmpty(listaEmpleados))
+				{
+					printf("No se puede remover sin cargar los empleados anteriormente");
+				}
+				else
+				{
+					controller_removeEmployee(listaEmpleados, nextId);
+				}
 				break;
 			case 6:
-				controller_ListEmployee(listaEmpleados);
+				if(ll_isEmpty(listaEmpleados))
+				{
+					printf("No se puede listar sin cargar los empleados anteriormente");
+				}
+				else
+				{
+					controller_ListEmployee(listaEmpleados);
+				}
 				break;
 			case 7:
-				controller_sortEmployee(listaEmpleados);
+				if(ll_isEmpty(listaEmpleados))
+				{
+					printf("No se puede grabar sin cargar los archivos anteriormente");
+				}
+				else
+				{
+					controller_sortEmployee(listaEmpleados);
+				}
 				break;
 			case 8:
-				if(flagCarga == 0)
+				if(ll_isEmpty(listaEmpleados))
 				{
 					printf("No se puede grabar sin cargar los archivos anteriormente");
 				}
@@ -85,7 +151,7 @@ int main()
 				}
 				break;
 			case 9:
-				if(flagCarga == 0)
+				if(ll_isEmpty(listaEmpleados))
 				{
 					printf("No se puede grabar sin cargar los archivos anteriormente");
 				}

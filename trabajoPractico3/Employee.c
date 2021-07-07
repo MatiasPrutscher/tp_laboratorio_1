@@ -167,9 +167,11 @@ int newEmpleado(Employee* this, int* id, char* path, LinkedList* pArrayListEmplo
 	char nombre[128];
 	int horasTrabajadas = 0;
 	int sueldo = 0;
-	this = employee_new();
+	char horaAux[10];
+	char sueldoAux[10];
+	char idAux[10];
 
-	if(this != NULL && id != NULL && path != NULL)
+	if(id != NULL && path != NULL)
 	{
 
 		validacionId(id, path);
@@ -177,10 +179,12 @@ int newEmpleado(Employee* this, int* id, char* path, LinkedList* pArrayListEmplo
 		utn_getString("Ingrese el nombre: ","Error, reingrese: ", 128, 5, nombre);
 		utn_getInt("Ingrese la cantidad de horas trabajadas: ", "Error, reingrese: ", 0, 400, 5, &horasTrabajadas);
 		utn_getInt("Ingrese el sueldo: ", "Error, reingrese: ", 1000, 50000, 5, &sueldo);
-		if(employee_setId(this, *id)
-		   && employee_setNombre(this, nombre)
-		   && employee_setHorasTrabajadas(this, horasTrabajadas)
-		   && employee_setSueldo(this, sueldo))
+		itoa(horasTrabajadas, horaAux, 10);
+		itoa(sueldo, sueldoAux, 10);
+		itoa(*id, idAux, 10);
+
+		this = employee_newParametros(idAux, nombre, horaAux, sueldoAux);
+		if(this != NULL)
 		{
 			todoOk = 1;
 			ll_add(pArrayListEmployee, this);
@@ -221,12 +225,16 @@ int employee_CmpNombre(void* a, void* b)
 	int retorno = 0;
 	Employee* emp1;
 	Employee* emp2;
+	char* nombreUno = NULL;
+	char* nombreDos = NULL;
 	if(a != NULL && b != NULL)
 	{
 		emp1 = (Employee*) a;
 		emp2 = (Employee*) b;
+		employee_getNombre(emp1, nombreUno);
+		employee_getNombre(emp2, nombreDos);
 
-		retorno = strcmp(emp1->nombre, emp2->nombre);
+		retorno = strcmp(nombreUno, nombreDos);
 	}
 	return retorno;
 }
@@ -236,18 +244,22 @@ int employee_CmpSueldo(void* a, void* b)
 	int retorno = 0;
 	Employee* emp1;
 	Employee* emp2;
+	int sueldoUno;
+	int sueldoDos;
 	if(a != NULL && b != NULL)
 	{
 		emp1 = (Employee*) a;
 		emp2 = (Employee*) b;
+		employee_getSueldo(emp1, &sueldoUno);
+		employee_getSueldo(emp2, &sueldoDos);
 
-		if(emp1->sueldo > emp2->sueldo)
+		if(sueldoUno > sueldoDos)
 		{
 			retorno = 1;
 		}
 		else
 		{
-			if(emp1->sueldo < emp2->sueldo)
+			if(sueldoUno < sueldoDos)
 			{
 				retorno = -1;
 			}
@@ -261,18 +273,22 @@ int employee_CmpHorasTrabajadas(void* a, void* b)
 	int retorno = 0;
 	Employee* emp1;
 	Employee* emp2;
+	int horasUno;
+	int horasDos;
 	if(a != NULL && b != NULL)
 	{
 		emp1 = (Employee*) a;
 		emp2 = (Employee*) b;
+		employee_getHorasTrabajadas(emp1, &horasUno);
+		employee_getHorasTrabajadas(emp2, &horasDos);
 
-		if(emp1->horasTrabajadas > emp2->horasTrabajadas)
+		if(horasUno >horasDos)
 		{
 			retorno = 1;
 		}
 		else
 		{
-			if(emp1->horasTrabajadas < emp2->horasTrabajadas)
+			if(horasUno < horasDos)
 			{
 				retorno = -1;
 			}
@@ -286,18 +302,22 @@ int employee_CmpId(void* a, void* b)
 	int retorno = 0;
 	Employee* emp1;
 	Employee* emp2;
+	int idUno;
+	int idDos;
 	if(a != NULL && b != NULL)
 	{
 		emp1 = (Employee*) a;
 		emp2 = (Employee*) b;
+		employee_getId(emp1, &idUno);
+		employee_getId(emp2, &idDos);
 
-		if(emp1->id > emp2->id)
+		if(idUno > idDos)
 		{
 			retorno = 1;
 		}
 		else
 		{
-			if(emp1->id < emp2->id)
+			if(idUno < idDos)
 			{
 				retorno = -1;
 			}
